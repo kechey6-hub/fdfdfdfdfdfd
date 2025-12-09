@@ -1,175 +1,104 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>밤편지 - 아이유</title>
-  <style>
-    :root {
-      --bg-gradient-light: linear-gradient(180deg, #a58cf5, #7a6ac9);
-      --bg-gradient-dark: linear-gradient(180deg, #020617, #111827);
-      --card-light: rgba(255, 255, 255, 0.15);
-      --card-dark: rgba(15, 23, 42, 0.9);
-      --text-light: #ffffff;
-      --text-dark: #e5e7eb;
-      --btn-bg-light: #ffffff;
-      --btn-text-light: #111827;
-      --btn-bg-dark: #0f172a;
-      --btn-text-dark: #e5e7eb;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>밤편지 - IU | 힐링송</title>
 
-    * { box-sizing: border-box; }
+    <style>
+        body {
+            font-family: "Pretendard", sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(180deg, #b28cff 0%, #7f6ced 100%);
+            color: #fff;
+            text-align: center;
+        }
 
-    body {
-      margin: 0;
-      font-family: "Noto Sans KR", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg-gradient-light);
-      color: var(--text-light);
-      min-height: 100vh;
-    }
+        h1 {
+            margin: 40px 0 5px;
+            font-size: 42px;
+            font-weight: 800;
+        }
 
-    body.dark {
-      background: var(--bg-gradient-dark);
-      color: var(--text-dark);
-    }
+        .artist {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 32px;
+        }
 
-    .top-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px 20px;
-    }
+        .video-container {
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0px 15px 45px rgba(0,0,0,0.25);
+        }
 
-    .theme-toggle {
-      border: none;
-      border-radius: 999px;
-      padding: 8px 16px;
-      font-size: 14px;
-      cursor: pointer;
-      background: rgba(255, 255, 255, 0.18);
-      color: #111827;
-      backdrop-filter: blur(8px);
-    }
+        .content {
+            max-width: 900px;
+            margin: 40px auto;
+            font-size: 18px;
+            line-height: 1.6;
+        }
 
-    body.dark .theme-toggle {
-      background: rgba(15, 23, 42, 0.9);
-      color: #e5e7eb;
-    }
+        textarea {
+            width: 900px;
+            height: 160px;
+            margin-top: 25px;
+            font-size: 16px;
+            padding: 14px;
+            border-radius: 12px;
+            border: none;
+            outline: none;
+        }
 
-    .home-link {
-      text-decoration: none;
-      font-size: 14px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.18);
-      color: inherit;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 20px 20px 40px;
-      text-align: center;
-    }
-
-    h1 {
-      margin-top: 10px;
-      font-size: 32px;
-    }
-
-    .artist {
-      opacity: 0.9;
-      margin-bottom: 24px;
-    }
-
-    .video-wrap {
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.4);
-      margin-bottom: 28px;
-    }
-
-    .desc {
-      margin-bottom: 24px;
-      line-height: 1.7;
-    }
-
-    textarea {
-      width: 100%;
-      max-width: 100%;
-      height: 140px;
-      border-radius: 12px;
-      padding: 12px;
-      border: none;
-      font-size: 15px;
-      resize: none;
-      outline: none;
-    }
-
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 10px 22px;
-      border-radius: 999px;
-      border: none;
-      background: var(--btn-bg-light);
-      color: var(--btn-text-light);
-      font-weight: 600;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    body.dark .btn {
-      background: var(--btn-bg-dark);
-      color: var(--btn-text-dark);
-    }
-  </style>
+        a.home-btn {
+            display: inline-block;
+            margin: 40px auto;
+            background: #fff;
+            color: #7f6ced;
+            font-size: 16px;
+            padding: 14px 28px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0px 4px 14px rgba(0,0,0,0.18);
+            transition: 0.3s;
+        }
+        a.home-btn:hover {
+            background: #f3eaff;
+        }
+    </style>
 </head>
+
 <body>
-  <div class="top-bar">
-    <a href="index.html" class="home-link">← 메인으로</a>
-    <button id="themeToggle" class="theme-toggle">🌙 다크 모드</button>
-  </div>
 
-  <div class="container">
     <h1>밤편지</h1>
-    <p class="artist">아이유 (IU)</p>
+    <div class="artist">아이유 (IU)</div>
 
-    <div class="video-wrap">
-      <!-- 밤편지 유튜브 영상 주소의 ID 부분을 VIDEO_ID_HERE 자리에 넣어줘 -->
-      <iframe width="100%" height="400"
-        src="https://www.youtube.com/embed/VIDEO_ID_HERE"
-        title="밤편지"
-        frameborder="0"
-        allowfullscreen>
-      </iframe>
+    <div class="video-container">
+        <iframe 
+            width="100%" 
+            height="500" 
+            src="https://www.youtube.com/embed/LuqRkCDTMBY" 
+            title="밤편지 - IU (YouTube video player)" 
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+        </iframe>
     </div>
 
-    <p class="desc">
-      밤편지는 조용한 밤에 혼자 듣기 좋은, 잔잔하지만 깊은 위로를 주는 노래야.
-      차분한 보컬과 섬세한 멜로디가 마음을 천천히 감싸 주는 느낌이라서, 하루를 마무리할 때 들으면
-      감정이 부드럽게 정리되는 것 같아.
-    </p>
+    <div class="content">
+        밤편지는 조용한 밤에 혼자 듣기 좋은, 잔잔하지만 깊은 위로를 주는 노래야.
+        차분한 보컬과 섬세한 멜로디가 마음을 천천히 감싸 주는 느낌이라서,
+        하루를 마무리할 때 들으면 감정이 부드럽게 정리되는 것 같아.
+    </div>
 
     <textarea placeholder="여기에 나만의 감상을 적어보세요."></textarea>
-  </div>
 
-  <script>
-    const body = document.body;
-    const toggleBtn = document.getElementById('themeToggle');
-    const savedTheme = localStorage.getItem('theme');
+    <br>
+    <a href="index.html" class="home-btn">홈으로 돌아가기</a>
 
-    if (savedTheme === 'dark') {
-      body.classList.add('dark');
-      toggleBtn.textContent = '☀️ 라이트 모드';
-    }
-
-    toggleBtn.addEventListener('click', () => {
-      body.classList.toggle('dark');
-      const isDark = body.classList.contains('dark');
-      toggleBtn.textContent = isDark ? '☀️ 라이트 모드' : '🌙 다크 모드';
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    });
-  </script>
 </body>
 </html>
